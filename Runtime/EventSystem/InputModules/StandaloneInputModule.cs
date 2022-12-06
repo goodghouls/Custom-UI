@@ -13,16 +13,16 @@ namespace UnityEngine.EventSystems
     /// </remarks>
     public class StandaloneInputModule : PointerInputModule
     {
-        private float m_PrevActionTime;
-        private Vector2 m_LastMoveVector;
-        private int m_ConsecutiveMoveCount = 0;
+        protected float m_PrevActionTime;
+        protected Vector2 m_LastMoveVector;
+        protected int m_ConsecutiveMoveCount = 0;
 
-        private Vector2 m_LastMousePosition;
-        private Vector2 m_MousePosition;
+        protected Vector2 m_LastMousePosition;
+        protected Vector2 m_MousePosition;
 
-        private GameObject m_CurrentFocusedGameObject;
+        protected GameObject m_CurrentFocusedGameObject;
 
-        private PointerEventData m_InputPointerEvent;
+        protected PointerEventData m_InputPointerEvent;
 
         protected StandaloneInputModule()
         {
@@ -42,35 +42,35 @@ namespace UnityEngine.EventSystems
         }
 
         [SerializeField]
-        private string m_HorizontalAxis = "Horizontal";
+        protected string m_HorizontalAxis = "Horizontal";
 
         /// <summary>
         /// Name of the vertical axis for movement (if axis events are used).
         /// </summary>
         [SerializeField]
-        private string m_VerticalAxis = "Vertical";
+        protected string m_VerticalAxis = "Vertical";
 
         /// <summary>
         /// Name of the submit button.
         /// </summary>
         [SerializeField]
-        private string m_SubmitButton = "Submit";
+        protected string m_SubmitButton = "Submit";
 
         /// <summary>
         /// Name of the submit button.
         /// </summary>
         [SerializeField]
-        private string m_CancelButton = "Cancel";
+        protected string m_CancelButton = "Cancel";
 
         [SerializeField]
-        private float m_InputActionsPerSecond = 10;
+        protected float m_InputActionsPerSecond = 10;
 
         [SerializeField]
-        private float m_RepeatDelay = 0.5f;
+        protected float m_RepeatDelay = 0.5f;
 
         [SerializeField]
         [FormerlySerializedAs("m_AllowActivationOnMobileDevice")]
-        private bool m_ForceModuleActive;
+        protected bool m_ForceModuleActive;
 
         [Obsolete("allowActivationOnMobileDevice has been deprecated. Use forceModuleActive instead (UnityUpgradable) -> forceModuleActive")]
         public bool allowActivationOnMobileDevice
@@ -148,7 +148,7 @@ namespace UnityEngine.EventSystems
             set { m_CancelButton = value; }
         }
 
-        private bool ShouldIgnoreEventsOnNoFocus()
+        protected bool ShouldIgnoreEventsOnNoFocus()
         {
 #if UNITY_EDITOR
             return !UnityEditor.EditorApplication.isRemoteConnected;
