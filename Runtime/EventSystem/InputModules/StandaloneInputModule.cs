@@ -267,7 +267,7 @@ namespace UnityEngine.EventSystems
             ClearSelection();
         }
 
-        public override void Process()
+        public virtual override void Process()
         {
             if (!eventSystem.isFocused && ShouldIgnoreEventsOnNoFocus())
                 return;
@@ -437,7 +437,7 @@ namespace UnityEngine.EventSystems
         /// Calculate and send a submit event to the current selected object.
         /// </summary>
         /// <returns>If the submit event was used by the selected object.</returns>
-        protected bool SendSubmitEventToSelectedObject()
+        protected virtual bool SendSubmitEventToSelectedObject()
         {
             if (eventSystem.currentSelectedGameObject == null)
                 return false;
@@ -478,7 +478,7 @@ namespace UnityEngine.EventSystems
         /// Calculate and send a move event to the current selected object.
         /// </summary>
         /// <returns>If the move event was used by the selected object.</returns>
-        protected bool SendMoveEventToSelectedObject()
+        protected virtual bool SendMoveEventToSelectedObject()
         {
             float time = Time.unscaledTime;
 
@@ -523,7 +523,7 @@ namespace UnityEngine.EventSystems
             return axisEventData.used;
         }
 
-        protected void ProcessMouseEvent()
+        protected virtual void ProcessMouseEvent()
         {
             ProcessMouseEvent(0);
         }
@@ -537,7 +537,7 @@ namespace UnityEngine.EventSystems
         /// <summary>
         /// Process all mouse events.
         /// </summary>
-        protected void ProcessMouseEvent(int id)
+        protected virtual void ProcessMouseEvent(int id)
         {
             var mouseData = GetMousePointerEventData(id);
             var leftButtonData = mouseData.GetButtonState(PointerEventData.InputButton.Left).eventData;
@@ -562,7 +562,7 @@ namespace UnityEngine.EventSystems
             }
         }
 
-        protected bool SendUpdateEventToSelectedObject()
+        protected virtual bool SendUpdateEventToSelectedObject()
         {
             if (eventSystem.currentSelectedGameObject == null)
                 return false;
@@ -575,7 +575,7 @@ namespace UnityEngine.EventSystems
         /// <summary>
         /// Calculate and process any mouse button state changes.
         /// </summary>
-        protected void ProcessMousePress(MouseButtonEventData data)
+        protected virtual void ProcessMousePress(MouseButtonEventData data)
         {
             var pointerEvent = data.buttonData;
             var currentOverGo = pointerEvent.pointerCurrentRaycast.gameObject;
