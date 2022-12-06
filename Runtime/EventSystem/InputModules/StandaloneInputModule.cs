@@ -267,7 +267,7 @@ namespace UnityEngine.EventSystems
             ClearSelection();
         }
 
-        public virtual override void Process()
+        public override void Process()
         {
             if (!eventSystem.isFocused && ShouldIgnoreEventsOnNoFocus())
                 return;
