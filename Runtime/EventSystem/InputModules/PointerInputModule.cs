@@ -239,7 +239,7 @@ namespace UnityEngine.EventSystems
             }
         }
 
-        private readonly MouseState m_MouseState = new MouseState();
+        protected readonly MouseState m_MouseState = new MouseState();
 
         /// <summary>
         /// Return the current MouseState. Using the default pointer.
