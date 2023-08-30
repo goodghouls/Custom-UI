@@ -240,6 +240,9 @@ namespace UnityEngine.EventSystems
             currentPointerData.pointerEnter = newEnterTarget;
             if (newEnterTarget != null)
             {
+                // de-select the currently selected object on pointer enter, because Unity will not visually update
+                // to the hover state if the object is still selected
+                eventSystem.SetSelectedGameObject(null);
                 Transform t = newEnterTarget.transform;
 
                 while (t != null && t.gameObject != commonRoot)
